@@ -1,0 +1,30 @@
+version: "3.9"
+
+networks:
+  gitlab_net:
+    driver: bridge
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    restart: unless-stopped
+    hostname: gitlab.local
+    networks:
+      - gitlab_net
+    ports:
+      - "443:443"
+      
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.local'
+        nginx['ssl_certificate'] = '/run/secrets/gitlab_cert'
+        nginx['ssl_certificate_key'] = '/run/secrets/gitlab_key'
+    secrets:
+      - gitlab_cert
+      - gitlab_key
+
+secrets:
+  gitlab_cert:
+    file: ./secrets/fullchain.pem
+  gitlab_key:
+    file: ./secrets/privkey.pem
