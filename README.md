@@ -23,3 +23,25 @@ go run cmd/server/server.go
 
 Запуск теста:
 go run cmd/test/test_api.go
+
+Получить все записи 
+curl -k https://localhost/posts
+
+Добавить новую запись
+```
+curl -k -X POST https://localhost/posts \
+  -H "Content-Type: application/json" \
+  -d '{
+        "id": 0,
+        "responsible_id": 0,
+        "responsible_name": "Test,
+        "context": "Test",
+        "assigned_at": 228,
+        "due_date": 322
+      }'
+```
+Получить все записи
+```
+docker exec -it news_app-db-1 \
+  psql -U news_user -d news -c "SELECT * FROM posts;"
+```
