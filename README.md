@@ -25,8 +25,9 @@ go run cmd/server/server.go
 go run cmd/test/test_api.go
 
 Получить все записи 
+```
 curl -k https://localhost/posts
-
+```
 Добавить новую запись
 ```
 curl -k -X POST https://localhost/posts \
