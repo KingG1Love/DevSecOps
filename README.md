@@ -41,7 +41,7 @@ curl -k -X POST https://localhost/posts \
         "due_date": 322
       }'
 ```
-Получить все записи
+Посмотреть все записи в ДБ
 ```
 docker exec -it news_app-db-1 \
   psql -U news_user -d news -c "SELECT * FROM posts;"
