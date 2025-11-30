@@ -1,7 +1,7 @@
 # DevSecOps
 
 Модель ДБ:
-
+```
 type Task struct {
     ID              int    // ID задачи
     ResponsibleID   int    // id ответственного
@@ -10,20 +10,20 @@ type Task struct {
     AssignedAt      int64  // срок постановки задачи / дата назначения (Unix timestamp)
     Context         string // контекст / описание задачи
 }
-
+```
 Методы
-
+```
 GET /posts
 POST /posts
 PUT /posts
 DELETE /posts
-
+```
 Запуск сервера:
 go run cmd/server/server.go
 
 Запуск теста:
 go run cmd/test/test_api.go
 
-Результаты выполнения операций отображаются в консоли с цветовой индикацией:
+Результаты выполнения операций отображаются в консоли:
 Зеленый - успешное выполнение
 Красный - ошибка выполнения
